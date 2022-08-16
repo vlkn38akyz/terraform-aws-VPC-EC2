@@ -53,6 +53,7 @@ resource "aws_instance" "tfmyec2" {
    #user_data = file("user_data.sh")
    user_data = file("${path.module}/user_data.sh")
   vpc_security_group_ids = [ aws_security_group.tf-sg.id ]
+  count = var.num_of_instance
   
 
   tags = {
