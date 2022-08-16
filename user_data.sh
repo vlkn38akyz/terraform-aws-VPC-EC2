@@ -1,5 +1,4 @@
 #! /bin/bash
-hostnamectl set-hostname ${server-name}
 #update os
 yum update -y
 #install apache server
