@@ -28,12 +28,12 @@ data "aws_ami" "amazon-linux-2" {
   }
 }
 
-data "template_file" "userdata" {
-  template = file("${abspath(path.module)}/userdata.sh")
-  vars = {
-    server-name = var.server-name
-  }
-}
+# data "template_file" "userdata" {
+#   template = file("${abspath(path.module)}/userdata.sh")
+#   vars = {
+#     server-name = var.server-name
+#   }
+# }
 
 
 resource "aws_vpc" "module_vpc" {
@@ -50,7 +50,7 @@ resource "aws_instance" "tfmyec2" {
   instance_type = var.instance_type
   key_name = var.key_name
   subnet_id = aws_subnet.public_subnet.id
-  user_data = data.template_file.userdata.rendered
+  user_data = file("user_data.sh")
   vpc_security_group_ids = [ aws_security_group.tf-sg.id ]
   
 
