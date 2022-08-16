@@ -48,3 +48,8 @@ variable "VPC-EC2-ports" {
   description = "VPC-EC2-sec-gr-inbound-rules"
   default = [22, 80, 8080]
 }
+
+variable "server-name" {
+  type = string
+  default = "VPC-EC2"
+}
